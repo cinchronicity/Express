@@ -74,7 +74,7 @@ app.put('/students/:name/:class/:grade', (req, res) => { // create a route that 
   let student = students.find((student) => { return student.name === req.params.name }); // checks if an object with the name in  req URL (req.params.name) exists in the students array
 
   if (student) {
-    student.classes[req.params.class] = parseInt(req.params.grade);
+    student.classes[req.params.class] = parseInt(req.params.grade); // if student is found, the grade of the class in req URL (req.params.class) is updated with the grade in req URL (req.params.grade)  ex: http://localhost:8080/students/Ben%20Cohen/biology/90 where 90 is the new grade 
     res.status(201).send('Student ' + req.params.name + ' was assigned a grade of ' + req.params.grade + ' in ' + req.params.class); // if student is found, students array is updated with the new grade and a message is sent to the client
   } else {
     res.status(404).send('Student with the name ' + req.params.name + ' was not found.'); // if student is not found, a 404 status code is sent to the client
